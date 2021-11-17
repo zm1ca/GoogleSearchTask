@@ -9,8 +9,8 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    let searchResults: [String] = ["first", "second", "third"]
-    
+    private var viewModel: TableViewViewModelType?
+
     private var isSearching: Bool! {
         didSet {
             if isSearching {
@@ -28,11 +28,13 @@ class SearchVC: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let resultsTableView  = UITableView(frame: .zero, style: .plain)
     
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         layoutUI()
+        viewModel = SearchViewModel()
         
         configureHidingKeyboardOnTap()
         configureButtonActions()
@@ -96,9 +98,17 @@ class SearchVC: UIViewController {
     }
     
     @objc private func searchButtonTapped() {
+        guard let query = queryTextField.text, !query.isEmpty else { return } //TODO: Lock button when there's no query
+        
         isSearching.toggle()
         hideKeyboard()
-        print("Perform search")
+        
+        viewModel?.fetchSearchResults(for: query) { [weak self] in
+            DispatchQueue.main.async {
+                self?.resultsTableView.reloadData()
+                self?.isSearching = false
+            }
+        }
     }
 }
 
@@ -114,22 +124,21 @@ extension SearchVC: UITextFieldDelegate {
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func configureResultsTableView() {
-        resultsTableView.register(UITableViewCell.self,
-                                  forCellReuseIdentifier: Constants.searchResultsCellReuseID)
-        resultsTableView.delegate   = self
-        resultsTableView.dataSource = self
+        resultsTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.searchResultsCellReuseID)
+        resultsTableView.delegate        = self
+        resultsTableView.dataSource      = self
+        resultsTableView.allowsSelection = false
         resultsTableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchResults.count
+        viewModel?.numberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = resultsTableView.dequeueReusableCell(
-            withIdentifier: Constants.searchResultsCellReuseID,
-            for: indexPath)
-        cell.textLabel?.text = searchResults[indexPath.row]
+        let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.searchResultsCellReuseID, for: indexPath)
+        guard let viewModel = viewModel else { return UITableViewCell() }
+        cell.textLabel?.text = viewModel.text(forCellAt: indexPath)
         return cell
     }
     
