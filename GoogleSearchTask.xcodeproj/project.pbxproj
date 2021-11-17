@@ -13,6 +13,8 @@
 		400579AF2744D0CB002B1862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400579AE2744D0CB002B1862 /* Assets.xcassets */; };
 		400579B22744D0CB002B1862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400579B02744D0CB002B1862 /* LaunchScreen.storyboard */; };
 		400579BE2744D586002B1862 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579BD2744D586002B1862 /* UIView+Ext.swift */; };
+		400579C02744DB0A002B1862 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579BF2744DB0A002B1862 /* UIColor+Ext.swift */; };
+		400579C22744DD91002B1862 /* GSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579C12744DD91002B1862 /* GSTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		400579B12744D0CB002B1862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		400579B32744D0CB002B1862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		400579BD2744D586002B1862 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		400579BF2744DB0A002B1862 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		400579C12744DD91002B1862 /* GSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		400579BB2744D46B002B1862 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				400579C12744DD91002B1862 /* GSTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				400579BD2744D586002B1862 /* UIView+Ext.swift */,
+				400579BF2744DB0A002B1862 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 			files = (
 				400579AA2744D0C9002B1862 /* SearchVC.swift in Sources */,
 				400579BE2744D586002B1862 /* UIView+Ext.swift in Sources */,
+				400579C02744DB0A002B1862 /* UIColor+Ext.swift in Sources */,
+				400579C22744DD91002B1862 /* GSTextField.swift in Sources */,
 				400579A62744D0C9002B1862 /* AppDelegate.swift in Sources */,
 				400579A82744D0C9002B1862 /* SceneDelegate.swift in Sources */,
 			);
