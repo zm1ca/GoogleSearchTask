@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		400579A62744D0C9002B1862 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579A52744D0C9002B1862 /* AppDelegate.swift */; };
 		400579A82744D0C9002B1862 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579A72744D0C9002B1862 /* SceneDelegate.swift */; };
-		400579AA2744D0C9002B1862 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579A92744D0C9002B1862 /* ViewController.swift */; };
-		400579AD2744D0C9002B1862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400579AB2744D0C9002B1862 /* Main.storyboard */; };
+		400579AA2744D0C9002B1862 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579A92744D0C9002B1862 /* SearchVC.swift */; };
 		400579AF2744D0CB002B1862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400579AE2744D0CB002B1862 /* Assets.xcassets */; };
 		400579B22744D0CB002B1862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400579B02744D0CB002B1862 /* LaunchScreen.storyboard */; };
+		400579BE2744D586002B1862 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579BD2744D586002B1862 /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		400579A22744D0C9002B1862 /* GoogleSearchTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleSearchTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		400579A52744D0C9002B1862 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		400579A72744D0C9002B1862 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		400579A92744D0C9002B1862 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		400579AC2744D0C9002B1862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		400579A92744D0C9002B1862 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		400579AE2744D0CB002B1862 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		400579B12744D0CB002B1862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		400579B32744D0CB002B1862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		400579BD2744D586002B1862 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,47 @@
 		400579A42744D0C9002B1862 /* GoogleSearchTask */ = {
 			isa = PBXGroup;
 			children = (
-				400579A52744D0C9002B1862 /* AppDelegate.swift */,
-				400579A72744D0C9002B1862 /* SceneDelegate.swift */,
-				400579A92744D0C9002B1862 /* ViewController.swift */,
-				400579AB2744D0C9002B1862 /* Main.storyboard */,
+				400579A92744D0C9002B1862 /* SearchVC.swift */,
+				400579BB2744D46B002B1862 /* Views */,
+				400579BC2744D578002B1862 /* Extensions */,
+				400579B92744D108002B1862 /* Supporting Files */,
+			);
+			path = GoogleSearchTask;
+			sourceTree = "<group>";
+		};
+		400579B92744D108002B1862 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				400579BA2744D15F002B1862 /* Application */,
 				400579AE2744D0CB002B1862 /* Assets.xcassets */,
 				400579B02744D0CB002B1862 /* LaunchScreen.storyboard */,
 				400579B32744D0CB002B1862 /* Info.plist */,
 			);
-			path = GoogleSearchTask;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		400579BA2744D15F002B1862 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				400579A52744D0C9002B1862 /* AppDelegate.swift */,
+				400579A72744D0C9002B1862 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		400579BB2744D46B002B1862 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		400579BC2744D578002B1862 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				400579BD2744D586002B1862 /* UIView+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +159,6 @@
 			files = (
 				400579B22744D0CB002B1862 /* LaunchScreen.storyboard in Resources */,
 				400579AF2744D0CB002B1862 /* Assets.xcassets in Resources */,
-				400579AD2744D0C9002B1862 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				400579AA2744D0C9002B1862 /* ViewController.swift in Sources */,
+				400579AA2744D0C9002B1862 /* SearchVC.swift in Sources */,
+				400579BE2744D586002B1862 /* UIView+Ext.swift in Sources */,
 				400579A62744D0C9002B1862 /* AppDelegate.swift in Sources */,
 				400579A82744D0C9002B1862 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +179,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		400579AB2744D0C9002B1862 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				400579AC2744D0C9002B1862 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		400579B02744D0CB002B1862 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,10 +315,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3Y322LSDU5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GoogleSearchTask/Info.plist;
+				INFOPLIST_FILE = "GoogleSearchTask/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,7 +330,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,10 +343,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3Y322LSDU5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GoogleSearchTask/Info.plist;
+				INFOPLIST_FILE = "GoogleSearchTask/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -334,7 +358,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
