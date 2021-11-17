@@ -31,7 +31,7 @@ class GSSearchButton: UIButton {
         switch appearance {
         case .search:
             backgroundColor = .systemGreen
-            setTitle("Search", for: .normal)
+            setTitle("Google Search", for: .normal) //fancy attributed string?
         case .stop:
             backgroundColor = .systemRed
             setTitle("Stop", for: .normal)
