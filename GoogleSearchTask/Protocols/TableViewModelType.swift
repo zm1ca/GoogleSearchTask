@@ -12,4 +12,5 @@ protocol TableViewViewModelType {
     func numberOfRows() -> Int
     func text(forCellAt indexPath: IndexPath) -> String
     func fetchSearchResults(for query: String, completion: @escaping () -> ())
+    func cancelAllOperationsOnQueue()
 }

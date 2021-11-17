@@ -9,20 +9,37 @@ import Foundation
 
 class SearchViewModel: TableViewViewModelType {
     
+    private let queue = OperationQueue()
+    
     private var networkManager = NetworkManager()
     
     private var searchResults: [SearchResult]?
     
     func fetchSearchResults(for query: String, completion: @escaping () -> ()) {
-        //TODO: Switch to Operation Queue (1. network, 2. parse, 3. completion
-        let queue = DispatchQueue.global(qos: .userInitiated)
-        queue.async {
+        //Fetching google's response for query
+        let networkingOperation = BlockOperation {
             NetworkManager.fetchSearchBody(for: query) { [weak self] searchResults in
                 guard let self = self else { return }
                 self.searchResults = searchResults.map { SearchResult(link: $0) }
-                completion()
             }
         }
+        
+        //Parsing response to fill searchResults
+        let parsingOperation = BlockOperation {
+            print("Parsing")
+        }
+        parsingOperation.addDependency(networkingOperation)
+        
+        //Calling completion block
+        let completionOperation = BlockOperation(block: completion)
+        completionOperation.addDependency(parsingOperation)
+        
+        
+        queue.addOperations([networkingOperation, parsingOperation, completionOperation], waitUntilFinished: false )
+    }
+    
+    func cancelAllOperationsOnQueue() {
+        queue.cancelAllOperations()
     }
     
     func numberOfRows() -> Int {

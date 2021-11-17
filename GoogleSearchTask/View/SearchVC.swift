@@ -43,10 +43,6 @@ class SearchVC: UIViewController {
         isSearching = false
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        .portrait
-    }
-    
     
     //MARK: - UI
     private func layoutUI() {
@@ -96,18 +92,26 @@ class SearchVC: UIViewController {
     private func configureButtonActions() {
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
     }
-    
+
     @objc private func searchButtonTapped() {
-        guard let query = queryTextField.text, !query.isEmpty else { return } //TODO: Lock button when there's no query
-        
         isSearching.toggle()
         hideKeyboard()
         
-        viewModel?.fetchSearchResults(for: query) { [weak self] in
-            DispatchQueue.main.async {
-                self?.resultsTableView.reloadData()
-                self?.isSearching = false
+        //TODO: Lock button when there's no query
+        if isSearching {
+            guard let query = queryTextField.text, !query.isEmpty else {
+                isSearching = false
+                return
             }
+            
+            viewModel?.fetchSearchResults(for: query) { [weak self] in
+                DispatchQueue.main.async {
+                    self?.resultsTableView.reloadData()
+                    self?.isSearching = false
+                }
+            }
+        } else {
+            viewModel?.cancelAllOperationsOnQueue()
         }
     }
 }
