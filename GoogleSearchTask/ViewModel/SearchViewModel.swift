@@ -16,28 +16,19 @@ class SearchViewModel: TableViewViewModelType {
     private var searchResults: [SearchResult]?
     
     func fetchSearchResults(for query: String, completion: @escaping () -> ()) {
-        //Fetching google's response for query
-        let networkingOperation = BlockOperation {
-            NetworkManager.fetchSearchBody(for: query) { [weak self] searchResults in
-                guard let self = self else { return }
-                self.searchResults = searchResults.map { SearchResult(link: $0) }
-            }
-        }
+        let networkingOperation = GSNetworkingOperation(query: query)
         
-        //Parsing response to fill searchResults
-        let parsingOperation = BlockOperation {
-            print("Parsing")
+        let parsingOperation = GSParsingOperation()
+        parsingOperation.completion = {
+            guard let searchResults = parsingOperation.searchResults else { return }
+            self.searchResults = searchResults
+            completion()
         }
         parsingOperation.addDependency(networkingOperation)
         
-        //Calling completion block
-        let completionOperation = BlockOperation(block: completion)
-        completionOperation.addDependency(parsingOperation)
-        
-        
-        queue.addOperations([networkingOperation, parsingOperation, completionOperation], waitUntilFinished: false )
+        queue.addOperations([networkingOperation, parsingOperation], waitUntilFinished: false)
     }
-    
+     
     func cancelAllOperationsOnQueue() {
         queue.cancelAllOperations()
     }
