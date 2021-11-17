@@ -15,6 +15,7 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        configureHidingKeyboardOnTap()
         layoutUI()
     }
     
@@ -23,7 +24,7 @@ class SearchVC: UIViewController {
     }
     
     
-    //MARK: - Configurations
+    //MARK: - UI
     private func layoutUI() {
         view.addSubviews(queryTextField)
         NSLayoutConstraint.activate([
@@ -33,5 +34,26 @@ class SearchVC: UIViewController {
             queryTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
+    
+    //MARK: - Configurations
+    private func configureHidingKeyboardOnTap() {
+        queryTextField.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
+    }
 }
 
+
+extension SearchVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hideKeyboard()
+        return true
+    }
+}

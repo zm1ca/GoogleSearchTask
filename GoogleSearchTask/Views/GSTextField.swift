@@ -29,6 +29,7 @@ class GSTextField: UITextField {
         
         autocorrectionType      = .no
         autocapitalizationType  = .sentences
+        returnKeyType           = .google
         
         translatesAutoresizingMaskIntoConstraints = false
     }
