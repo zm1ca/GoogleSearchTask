@@ -15,6 +15,7 @@
 		400579BE2744D586002B1862 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579BD2744D586002B1862 /* UIView+Ext.swift */; };
 		400579C02744DB0A002B1862 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579BF2744DB0A002B1862 /* UIColor+Ext.swift */; };
 		400579C22744DD91002B1862 /* GSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579C12744DD91002B1862 /* GSTextField.swift */; };
+		400579C62744E222002B1862 /* GSSearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579C52744E222002B1862 /* GSSearchButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		400579BD2744D586002B1862 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		400579BF2744DB0A002B1862 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		400579C12744DD91002B1862 /* GSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTextField.swift; sourceTree = "<group>"; };
+		400579C52744E222002B1862 /* GSSearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSSearchButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				400579A92744D0C9002B1862 /* SearchVC.swift */,
-				400579BB2744D46B002B1862 /* Views */,
+				400579BB2744D46B002B1862 /* Custom */,
 				400579BC2744D578002B1862 /* Extensions */,
 				400579B92744D108002B1862 /* Supporting Files */,
 			);
@@ -88,12 +90,13 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		400579BB2744D46B002B1862 /* Views */ = {
+		400579BB2744D46B002B1862 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				400579C12744DD91002B1862 /* GSTextField.swift */,
+				400579C52744E222002B1862 /* GSSearchButton.swift */,
 			);
-			path = Views;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		400579BC2744D578002B1862 /* Extensions */ = {
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				400579AA2744D0C9002B1862 /* SearchVC.swift in Sources */,
+				400579C62744E222002B1862 /* GSSearchButton.swift in Sources */,
 				400579BE2744D586002B1862 /* UIView+Ext.swift in Sources */,
 				400579C02744DB0A002B1862 /* UIColor+Ext.swift in Sources */,
 				400579C22744DD91002B1862 /* GSTextField.swift in Sources */,
