@@ -13,9 +13,10 @@ class GSParsingOperation: Operation {
     var searchResults: [SearchResult]?
     
     override func main() {
-        guard let searchResultsHTMLString = fetchedSearchResultsHTMLString() else { return }
+        if let searchResultsHTMLString = fetchedSearchResultsHTMLString() {
+            searchResults = parse(htmlDocument: searchResultsHTMLString)
+        }
         
-        searchResults = parse(htmlDocument: searchResultsHTMLString)
         if let completion = completion {
             completion()
         }
@@ -24,7 +25,6 @@ class GSParsingOperation: Operation {
     private func fetchedSearchResultsHTMLString() -> String? {
         for operation in dependencies {
             if let networkingOperation = operation as? GSNetworkingOperation {
-                print(operation.isFinished)
                 return networkingOperation.searchResultsHTMLString
             }
         }

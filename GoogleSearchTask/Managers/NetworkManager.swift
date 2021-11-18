@@ -13,31 +13,31 @@ class NetworkManager {
     private let baseURL = "https://www.google.by/search?q="
     private init() { }
 
-    func fetchSearchBody(for query: String, completion: @escaping (String) -> ()) {
+    func fetchSearchBody(for query: String, completed: @escaping (Result<String, GSError>) -> Void) {
         let rawEndpoint = baseURL + query
         guard let endpoint = rawEndpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: endpoint) else {
-            //completed(.failure(.invalidQuery))
+            completed(.failure(.invalidQuery))
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
-                //completed(.failure(.unableToComplete))
+                completed(.failure(.unableToComplete))
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                //completed(.failure(.invalidResponse))
+                completed(.failure(.invalidResponse))
                 return
             }
             
-            guard let data = data, let htmlString = String(data: data, encoding: .windowsCP1251) else {
-                //completed(.failure(.invalidData))
+            guard let data = data, let htmlString = String(data: data, encoding: .windowsCP1251) else { //TODO: Fix encoding
+                completed(.failure(.invalidData))
                 return
             }
         
-            completion(htmlString)
+            completed(.success(htmlString))
         }
         task.resume()
     }

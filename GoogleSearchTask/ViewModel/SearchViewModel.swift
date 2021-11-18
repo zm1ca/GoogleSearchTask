@@ -18,8 +18,9 @@ class SearchViewModel: TableViewViewModelType {
         
         let parsingOperation = GSParsingOperation()
         parsingOperation.completion = {
-            guard let searchResults = parsingOperation.searchResults else { return }
-            self.searchResults = searchResults
+            if let searchResults = parsingOperation.searchResults {
+                self.searchResults = searchResults
+            }
             completion()
         }
         parsingOperation.addDependency(networkingOperation)

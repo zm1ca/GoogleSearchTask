@@ -22,6 +22,7 @@
 		400579D62744F55A002B1862 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579D52744F55A002B1862 /* SearchResult.swift */; };
 		400579D92744F90C002B1862 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579D82744F90C002B1862 /* NetworkManager.swift */; };
 		4081FB2527462E93009497FD /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4081FB2427462E93009497FD /* AsyncOperation.swift */; };
+		4081FB28274633AD009497FD /* GSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4081FB27274633AD009497FD /* GSError.swift */; };
 		40F5C01327452597002F00DF /* GSNetworkingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5C01227452597002F00DF /* GSNetworkingOperation.swift */; };
 		40F5C015274525E8002F00DF /* GSParsingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5C014274525E8002F00DF /* GSParsingOperation.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		400579D52744F55A002B1862 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		400579D82744F90C002B1862 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4081FB2427462E93009497FD /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		4081FB27274633AD009497FD /* GSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSError.swift; sourceTree = "<group>"; };
 		40F5C01227452597002F00DF /* GSNetworkingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSNetworkingOperation.swift; sourceTree = "<group>"; };
 		40F5C014274525E8002F00DF /* GSParsingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSParsingOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				400579CC2744F3B8002B1862 /* ViewModel */,
 				400579CD2744F3BE002B1862 /* Protocols */,
 				400579D72744F8F0002B1862 /* Managers */,
+				4081FB26274633A1009497FD /* Utilities */,
 				400579BB2744D46B002B1862 /* Custom UI Elements */,
 				400579BC2744D578002B1862 /* Extensions */,
 				400579B92744D108002B1862 /* Supporting Files */,
@@ -168,6 +171,14 @@
 				400579D82744F90C002B1862 /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		4081FB26274633A1009497FD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4081FB27274633AD009497FD /* GSError.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		40F5C0102745256A002F00DF /* Operations */ = {
@@ -262,6 +273,7 @@
 				400579C22744DD91002B1862 /* GSTextField.swift in Sources */,
 				400579CF2744F3F4002B1862 /* TableViewModelType.swift in Sources */,
 				400579A62744D0C9002B1862 /* AppDelegate.swift in Sources */,
+				4081FB28274633AD009497FD /* GSError.swift in Sources */,
 				400579A82744D0C9002B1862 /* SceneDelegate.swift in Sources */,
 				4081FB2527462E93009497FD /* AsyncOperation.swift in Sources */,
 				400579CA2744EEBE002B1862 /* Constants.swift in Sources */,
