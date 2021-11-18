@@ -21,6 +21,7 @@
 		400579D32744F49E002B1862 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579D22744F49E002B1862 /* SearchViewModel.swift */; };
 		400579D62744F55A002B1862 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579D52744F55A002B1862 /* SearchResult.swift */; };
 		400579D92744F90C002B1862 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400579D82744F90C002B1862 /* NetworkManager.swift */; };
+		4081FB2527462E93009497FD /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4081FB2427462E93009497FD /* AsyncOperation.swift */; };
 		40F5C01327452597002F00DF /* GSNetworkingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5C01227452597002F00DF /* GSNetworkingOperation.swift */; };
 		40F5C015274525E8002F00DF /* GSParsingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5C014274525E8002F00DF /* GSParsingOperation.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		400579D22744F49E002B1862 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		400579D52744F55A002B1862 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		400579D82744F90C002B1862 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4081FB2427462E93009497FD /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		40F5C01227452597002F00DF /* GSNetworkingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSNetworkingOperation.swift; sourceTree = "<group>"; };
 		40F5C014274525E8002F00DF /* GSParsingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSParsingOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 			children = (
 				40F5C01227452597002F00DF /* GSNetworkingOperation.swift */,
 				40F5C014274525E8002F00DF /* GSParsingOperation.swift */,
+				4081FB2427462E93009497FD /* AsyncOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				400579CF2744F3F4002B1862 /* TableViewModelType.swift in Sources */,
 				400579A62744D0C9002B1862 /* AppDelegate.swift in Sources */,
 				400579A82744D0C9002B1862 /* SceneDelegate.swift in Sources */,
+				4081FB2527462E93009497FD /* AsyncOperation.swift in Sources */,
 				400579CA2744EEBE002B1862 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

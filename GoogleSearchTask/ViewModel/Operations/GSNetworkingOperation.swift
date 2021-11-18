@@ -7,22 +7,21 @@
 
 import UIKit
 
-class GSNetworkingOperation: Operation {
+class GSNetworkingOperation: AsyncOperation {
     
-    var query: String?
-    var searchBody: [String]?
+    var query: String
+    var searchResultsHTMLString: String?
     
-    convenience init(query: String) {
-        self.init()
+    init(query: String) {
         self.query = query
-    }
+        super.init()
+      }
     
     override func main() {
-        guard let query = query else { return }
-        
-        NetworkManager.fetchSearchBody(for: query) { [weak self] searchResults in
+        NetworkManager.shared.fetchSearchBody(for: query) { [weak self] searchResultsHTMLString in
             guard let self = self else { return }
-            self.searchBody = searchResults
+            self.searchResultsHTMLString = searchResultsHTMLString
+            self.state = .finished
         }
     }
 

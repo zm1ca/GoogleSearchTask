@@ -11,8 +11,6 @@ class SearchViewModel: TableViewViewModelType {
     
     private let queue = OperationQueue()
     
-    private var networkManager = NetworkManager()
-    
     private var searchResults: [SearchResult]?
     
     func fetchSearchResults(for query: String, completion: @escaping () -> ()) {

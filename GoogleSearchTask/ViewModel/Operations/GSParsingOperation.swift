@@ -13,23 +13,26 @@ class GSParsingOperation: Operation {
     var searchResults: [SearchResult]?
     
     override func main() {
-        guard let searchBody = fetchedSearchBody() else { return }
+        guard let searchResultsHTMLString = fetchedSearchResultsHTMLString() else { return }
         
-        print("Parsing", searchBody)
-        searchResults = searchBody.map { SearchResult(link: $0) }
-        
+        searchResults = parse(htmlDocument: searchResultsHTMLString)
         if let completion = completion {
             completion()
         }
     }
     
-    private func fetchedSearchBody() -> [String]? {
+    private func fetchedSearchResultsHTMLString() -> String? {
         for operation in dependencies {
             if let networkingOperation = operation as? GSNetworkingOperation {
-                return networkingOperation.searchBody
+                print(operation.isFinished)
+                return networkingOperation.searchResultsHTMLString
             }
         }
         return nil
+    }
+    
+    private func parse(htmlDocument: String) -> [SearchResult] {
+        return ["link", "2", "34324"].map { SearchResult(link: $0) }
     }
 
 }
