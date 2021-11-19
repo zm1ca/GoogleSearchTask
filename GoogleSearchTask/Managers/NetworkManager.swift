@@ -11,7 +11,6 @@ class NetworkManager {
     
     static  let shared  = NetworkManager()
     private let baseURL = "https://www.google.com/search?q="
-//    private let baseURL = "https://yandex.by/search/?text="
     private init() { }
 
     func fetchSearchBody(for query: String, completed: @escaping (Result<String, GSError>) -> Void) {

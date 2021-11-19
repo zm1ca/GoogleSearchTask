@@ -12,10 +12,14 @@ class GSSearchButton: UIButton {
     var appearance: SearchButtonAppearance {
         didSet { updateAppearance() }
     }
+    
+    var isActive: Bool {
+        didSet { updateAlpha() }
+    }
 
     override init(frame: CGRect) {
         appearance = .search
-        
+        isActive   = false
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         updateAppearance()
@@ -31,10 +35,20 @@ class GSSearchButton: UIButton {
         switch appearance {
         case .search:
             backgroundColor = .systemGreen
-            setTitle("Google Search", for: .normal) //fancy attributed string?
+            setTitle("Google Search", for: .normal)
         case .stop:
             backgroundColor = .systemRed
             setTitle("Stop", for: .normal)
+        }
+    }
+    
+    func updateAlpha() {
+        if isActive {
+            alpha = 1
+            isEnabled = true
+        } else {
+            alpha = 0.85
+            isEnabled = false
         }
     }
     

@@ -20,6 +20,7 @@ class SearchVC: UIViewController {
                 searchButton.appearance = .search
                 activityIndicator.stopAnimating()
             }
+            updateSearchButtonIsActive()
         }
     }
     
@@ -37,10 +38,11 @@ class SearchVC: UIViewController {
         viewModel = SearchViewModel()
         
         configureHidingKeyboardOnTap()
-        configureButtonActions()
+        configureActions()
         configureResultsTableView()
         
         isSearching = false
+        updateSearchButtonIsActive()
     }
     
     
@@ -89,22 +91,17 @@ class SearchVC: UIViewController {
     
     
     //MARK: - Configure Button
-    private func configureButtonActions() {
+    private func configureActions() {
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        queryTextField.addTarget(self, action: #selector(updateSearchButtonIsActive), for: .editingChanged)
     }
 
     @objc private func searchButtonTapped() {
         isSearching.toggle()
         hideKeyboard()
         
-        //TODO: Lock button when there's no query
         if isSearching {
-            guard let query = queryTextField.text, !query.isEmpty else {
-                isSearching = false
-                return
-            }
-            
-            viewModel?.fetchSearchResults(for: query) { [weak self] in
+            viewModel?.fetchSearchResults(for: queryTextField.text!) { [weak self] in
                 DispatchQueue.main.async {
                     self?.resultsTableView.reloadData()
                     self?.isSearching = false
@@ -122,6 +119,10 @@ extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchButtonTapped()
         return true
+    }
+    
+    @objc func updateSearchButtonIsActive() {
+        searchButton.isActive = (queryTextField.text?.count ?? 0) > 0 || (searchButton.appearance == .stop)
     }
 }
 
