@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftSoup
 
 class GSParsingOperation: Operation {
     
@@ -31,8 +32,26 @@ class GSParsingOperation: Operation {
         return nil
     }
     
-    private func parse(htmlDocument: String) -> [SearchResult] {
-        return ["link", "2", "34324"].map { SearchResult(link: $0) }
+    private func parse(htmlDocument: String) -> [SearchResult]? {
+        var links: [SearchResult]? = nil
+        
+        do {
+            let doc = try SwiftSoup.parse(htmlDocument)
+
+            links = try doc.select("a")
+                .map    { try $0.attr("href")}
+                .filter { $0.hasPrefix("/url?q=") }
+                .map    { $0.dropFirst(7) }
+                .map    { SearchResult(link: String($0)) }
+                .dropLast(2)
+            
+        } catch Exception.Error(_, let message) {
+            print(message)
+        } catch {
+            print("error")
+        }
+        
+        return links
     }
 
 }

@@ -10,7 +10,8 @@ import Foundation
 class NetworkManager {
     
     static  let shared  = NetworkManager()
-    private let baseURL = "https://www.google.by/search?q="
+    private let baseURL = "https://www.google.com/search?q="
+//    private let baseURL = "https://yandex.by/search/?text="
     private init() { }
 
     func fetchSearchBody(for query: String, completed: @escaping (Result<String, GSError>) -> Void) {
@@ -31,12 +32,13 @@ class NetworkManager {
                 completed(.failure(.invalidResponse))
                 return
             }
-            
-            guard let data = data, let htmlString = String(data: data, encoding: .windowsCP1251) else { //TODO: Fix encoding
+
+            guard let data = data,
+                  let htmlString = String(data: data, encoding: .utf8) ?? String(data: data, encoding: .isoLatin1) else {
                 completed(.failure(.invalidData))
                 return
             }
-        
+            
             completed(.success(htmlString))
         }
         task.resume()

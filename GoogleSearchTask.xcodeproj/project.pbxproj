@@ -25,6 +25,7 @@
 		4081FB28274633AD009497FD /* GSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4081FB27274633AD009497FD /* GSError.swift */; };
 		40F5C01327452597002F00DF /* GSNetworkingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5C01227452597002F00DF /* GSNetworkingOperation.swift */; };
 		40F5C015274525E8002F00DF /* GSParsingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F5C014274525E8002F00DF /* GSParsingOperation.swift */; };
+		40F70F5227468D4100A94B81 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 40F70F5127468D4100A94B81 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F70F5227468D4100A94B81 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +209,9 @@
 			dependencies = (
 			);
 			name = GoogleSearchTask;
+			packageProductDependencies = (
+				40F70F5127468D4100A94B81 /* SwiftSoup */,
+			);
 			productName = GoogleSearchTask;
 			productReference = 400579A22744D0C9002B1862 /* GoogleSearchTask.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +240,9 @@
 				Base,
 			);
 			mainGroup = 400579992744D0C9002B1862;
+			packageReferences = (
+				40F70F5027468D4100A94B81 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 400579A32744D0C9002B1862 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -488,6 +496,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		40F70F5027468D4100A94B81 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		40F70F5127468D4100A94B81 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40F70F5027468D4100A94B81 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4005799A2744D0C9002B1862 /* Project object */;
 }
