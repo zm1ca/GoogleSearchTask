@@ -14,18 +14,23 @@ class SearchViewModel: TableViewViewModelType {
     private var searchResults: [SearchResult]?
     
     func fetchSearchResults(for query: String, completion: @escaping () -> ()) {
+        //1. Networking
         let networkingOperation = GSNetworkingOperation(query: query)
         
+        //2. Parsing
         let parsingOperation = GSParsingOperation()
-        parsingOperation.completion = {
+        parsingOperation.addDependency(networkingOperation)
+        
+        //3. Managing results
+        let completionOperation = BlockOperation {
             if let searchResults = parsingOperation.searchResults {
                 self.searchResults = searchResults
             }
             completion()
         }
-        parsingOperation.addDependency(networkingOperation)
+        completionOperation.addDependency(parsingOperation)
         
-        queue.addOperations([networkingOperation, parsingOperation], waitUntilFinished: false)
+        queue.addOperations([networkingOperation, parsingOperation, completionOperation], waitUntilFinished: false)
     }
      
     func cancelAllOperationsOnQueue() {
