@@ -9,5 +9,10 @@ import UIKit
 
 extension UIColor {
     
-    static let GSDarkSky = UIColor(red: 59/255, green: 59/255, blue: 59/255, alpha: 1)
+    static let bdazzledBlue = UIColor(named: "BdazzledBlue")!
+    static let palCerulean  = UIColor(named: "PaleCerulean")!
+    static let lightCyan    = UIColor(named: "LightCyan")!
+    static let burntSienna  = UIColor(named: "BurntSienna")!
+    static let gunmetal     = UIColor(named: "Gunmetal")!
 }
+

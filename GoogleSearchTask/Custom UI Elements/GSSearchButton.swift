@@ -23,7 +23,10 @@ class GSSearchButton: UIButton {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         updateAppearance()
-        setTitleColor(.GSDarkSky, for: .normal)
+        
+        setTitleColor(.gunmetal, for: .normal)
+        layer.borderColor  = UIColor.bdazzledBlue.cgColor
+        layer.borderWidth  = 2
         layer.cornerRadius = 12
     }
     
@@ -34,10 +37,10 @@ class GSSearchButton: UIButton {
     func updateAppearance() {
         switch appearance {
         case .search:
-            backgroundColor = .systemGreen
+            backgroundColor = .palCerulean
             setTitle("Google Search", for: .normal)
         case .stop:
-            backgroundColor = .systemRed
+            backgroundColor = .burntSienna
             setTitle("Stop", for: .normal)
         }
     }
@@ -47,7 +50,7 @@ class GSSearchButton: UIButton {
             alpha = 1
             isEnabled = true
         } else {
-            alpha = 0.85
+            alpha = 0.5
             isEnabled = false
         }
     }

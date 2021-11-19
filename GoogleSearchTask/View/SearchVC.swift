@@ -9,7 +9,7 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    private var viewModel: TableViewViewModelType?
+    var viewModel: TableViewViewModelType?
 
     private var isSearching: Bool! {
         didSet {
@@ -24,16 +24,16 @@ class SearchVC: UIViewController {
         }
     }
     
-    private let queryTextField    = GSTextField(placeholderText: "Who is John Doe?", accentColor: .GSDarkSky)
-    private let searchButton      = GSSearchButton()
-    private let activityIndicator = UIActivityIndicatorView(style: .large)
-    private let resultsTableView  = UITableView(frame: .zero, style: .plain)
+    let queryTextField    = GSTextField(placeholderText: "ex: Who is John Doe?", accentColor: .gunmetal)
+    let searchButton      = GSSearchButton()
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+    let resultsTableView  = UITableView(frame: .zero, style: .plain)
     
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .lightCyan
         layoutUI()
         viewModel = SearchViewModel()
         
@@ -50,9 +50,9 @@ class SearchVC: UIViewController {
     private func layoutUI() {
         view.addSubviews(queryTextField, searchButton, resultsTableView, activityIndicator)
         
-        let horizontalPaddding: CGFloat = 8
-        let verticalPading:     CGFloat = 8
-        let verticalInset:      CGFloat = 16
+        let horizontalPaddding: CGFloat = 24
+        let verticalPading:     CGFloat = 12
+        let verticalInset:      CGFloat = 24
         
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -69,7 +69,7 @@ class SearchVC: UIViewController {
             resultsTableView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: verticalPading),
             resultsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: horizontalPaddding),
             resultsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -horizontalPaddding),
-            resultsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -verticalInset),
+            resultsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -verticalInset),
             
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -96,7 +96,7 @@ class SearchVC: UIViewController {
         queryTextField.addTarget(self, action: #selector(updateSearchButtonIsActive), for: .editingChanged)
     }
 
-    @objc private func searchButtonTapped() {
+    @objc func searchButtonTapped() {
         isSearching.toggle()
         hideKeyboard()
         
@@ -111,44 +111,4 @@ class SearchVC: UIViewController {
             viewModel?.cancelAllOperationsOnQueue()
         }
     }
-}
-
-
-extension SearchVC: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchButtonTapped()
-        return true
-    }
-    
-    @objc func updateSearchButtonIsActive() {
-        searchButton.isActive = (queryTextField.text?.count ?? 0) > 0 || (searchButton.appearance == .stop)
-    }
-}
-
-extension SearchVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func configureResultsTableView() {
-        resultsTableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.searchResultsCellReuseID)
-        resultsTableView.delegate        = self
-        resultsTableView.dataSource      = self
-        resultsTableView.allowsSelection = false
-        resultsTableView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.numberOfRows() ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = resultsTableView.dequeueReusableCell(withIdentifier: Constants.searchResultsCellReuseID, for: indexPath)
-        guard let viewModel = viewModel else { return UITableViewCell() }
-        cell.textLabel?.text = viewModel.text(forCellAt: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Search results"
-    }
-    
 }

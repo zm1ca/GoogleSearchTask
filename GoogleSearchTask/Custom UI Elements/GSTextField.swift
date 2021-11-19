@@ -11,25 +11,23 @@ class GSTextField: UITextField {
 
     convenience init(placeholderText: String, accentColor: UIColor) {
         self.init(frame: .zero)
-        
-        tintColor               = accentColor
-        textColor               = accentColor
-        backgroundColor         = .white
-        
-        placeholder             = placeholderText
+        tintColor   = accentColor
+        textColor   = accentColor
+        placeholder = placeholderText
     }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        layer.borderColor       = UIColor.lightGray.cgColor
-        layer.borderWidth       = 2
-        layer.cornerRadius      = 12
-        
-        autocorrectionType      = .no
-        autocapitalizationType  = .sentences
-        returnKeyType           = .google
-        clearButtonMode         = .always
+        backgroundColor        = .lightCyan
+        layer.borderColor      = UIColor.bdazzledBlue.cgColor
+        layer.borderWidth      = 2
+        layer.cornerRadius     = 12
+    
+        autocorrectionType     = .no
+        autocapitalizationType = .sentences
+        returnKeyType          = .google
+        clearButtonMode        = .always
         
         translatesAutoresizingMaskIntoConstraints = false
     }
