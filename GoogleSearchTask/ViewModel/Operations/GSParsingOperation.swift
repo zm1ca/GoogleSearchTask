@@ -51,6 +51,10 @@ class GSParsingOperation: Operation {
             AlertManager.shared.presentAlertOnMainThread(title: "Parsing Error", message: "Unknown error.")
         }
         
+        if links == nil || links!.isEmpty {
+            AlertManager.shared.presentAlertOnMainThread(title: "Nothing found", message: "Sadly, there are no results on your query.")
+        }
+        
         return links
     }
 
