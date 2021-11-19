@@ -25,7 +25,7 @@ class GSNetworkingOperation: AsyncOperation {
             case .success(let searchResultsHTMLString):
                 self.searchResultsHTMLString = searchResultsHTMLString
             case .failure(let error):
-                AlertManager.shared.presentAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue)
+                AlertManager.shared.presentAlertOnMainThread(title: "Connection error", message: error.rawValue)
             }
             
             self.state = .finished

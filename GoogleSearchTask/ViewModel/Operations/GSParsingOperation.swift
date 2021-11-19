@@ -46,9 +46,9 @@ class GSParsingOperation: Operation {
                 .dropLast(2)
             
         } catch Exception.Error(_, let message) {
-            print(message)
+            AlertManager.shared.presentAlertOnMainThread(title: "Parsing Error", message: message)
         } catch {
-            print("error")
+            AlertManager.shared.presentAlertOnMainThread(title: "Parsing Error", message: "Unknown error.")
         }
         
         return links
